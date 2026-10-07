@@ -1,0 +1,212 @@
+GUIA PARA INSTALAR, ABRIR Y JUGAR CACHO
+========================================
+
+Esta guia explica desde cero como preparar Windows para ejecutar el juego,
+abrirlo y jugar una partida contra la computadora (IA). No hace falta saber
+programar; solo hay que seguir los pasos en orden.
+
+1. QUE NECESITAS
+----------------
+
+- Una computadora con Windows y conexion a Internet para la instalacion.
+- La carpeta completa del proyecto Cacho. Debe contener, entre otros, el
+  archivo main.py y la carpeta AgenteIA. No muevas main.py fuera del proyecto:
+  los demas archivos de la carpeta son necesarios para jugar.
+- Python, que es el programa que ejecuta el juego.
+- Visual Studio Code (VS Code), que usaremos para abrir la carpeta y escribir
+  los comandos. Si ya tienes VS Code y Python instalados, pasa al paso 4.
+
+2. INSTALAR PYTHON
+------------------
+
+1. Abre un navegador de Internet y visita:
+	https://www.python.org/downloads/windows/
+2. Descarga una version estable reciente de Python para Windows (64-bit).
+3. Abre el archivo descargado para iniciar el instalador.
+4. En la primera pantalla, marca la casilla "Add python.exe to PATH" si aparece.
+	Esto permite que Windows encuentre Python cuando escribamos comandos.
+5. Pulsa "Install Now" y espera a que termine la instalacion.
+6. Cierra el instalador.
+
+Si el instalador no muestra la casilla mencionada, continua con la instalacion.
+En los pasos siguientes tambien probaremos el comando py, que suele instalarse
+junto con Python en Windows.
+
+3. INSTALAR VISUAL STUDIO CODE
+------------------------------
+
+Si VS Code ya esta instalado, continua con el paso 4.
+
+1. Visita https://code.visualstudio.com/ y descarga Visual Studio Code para
+	Windows.
+2. Abre el archivo descargado y sigue las opciones recomendadas del instalador.
+3. Cuando termine, abre Visual Studio Code desde el menu Inicio de Windows.
+
+4. ABRIR LA CARPETA DEL PROYECTO
+--------------------------------
+
+1. En VS Code, abre el menu "Archivo" y elige "Abrir carpeta..." (en algunas
+	versiones aparece como "File" y "Open Folder...").
+2. Busca la carpeta Cacho que contiene main.py. Por ejemplo, puede estar en
+	Escritorio\IA\EC2\Cacho. Elige la carpeta Cacho, no solamente un archivo
+	que este dentro de ella, y confirma con "Seleccionar carpeta".
+3. Si VS Code pregunta si confias en los autores de los archivos, confirma
+	que confias en esta carpeta del proyecto.
+4. Comprueba que en la lista de archivos de la izquierda aparece main.py.
+
+5. ABRIR LA TERMINAL DE VS CODE
+-------------------------------
+
+La terminal es un panel donde se escriben instrucciones para Windows.
+
+1. En VS Code, abre el menu "Terminal" y selecciona "Nuevo terminal" ("New
+	Terminal" si la interfaz esta en ingles). Tambien puedes usar el menu
+	"Ver" > "Terminal".
+2. Aparecera un panel en la parte inferior. Normalmente sera PowerShell.
+3. La ruta que aparece en la terminal debe terminar en la carpeta del proyecto
+	Cacho. Si no es asi, vuelve al paso 4 y abre la carpeta correcta.
+
+6. COMPROBAR QUE PYTHON ESTA INSTALADO
+--------------------------------------
+
+Escribe este comando en la terminal y pulsa Enter:
+
+	 py --version
+
+Debe aparecer un numero de version, por ejemplo Python 3.x.x. Si Windows dice
+que no reconoce "py", prueba:
+
+	 python --version
+
+Si uno de los dos comandos muestra una version, Python esta listo. En los pasos
+siguientes usa el comando que funciono: py o python. Los ejemplos usan py.
+Si ninguno funciona, vuelve al paso 2, instala Python y luego cierra y vuelve
+a abrir VS Code para que Windows actualice la terminal.
+
+7. INSTALAR LA DEPENDENCIA DEL JUEGO
+------------------------------------
+
+El juego utiliza pygame para mostrar la ventana y los dados. Con la terminal
+abierta en la carpeta Cacho, ejecuta:
+
+	 py -m pip install pygame
+
+Si en el paso 6 tuviste que usar python en vez de py, ejecuta:
+
+	 python -m pip install pygame
+
+Espera a que termine. La instalacion fue correcta si no termina con un mensaje
+de error y vuelve a aparecer la linea de comandos. Este paso normalmente se
+hace una sola vez en esa computadora. El resto de los archivos que usa el juego
+ya vienen en la carpeta del proyecto; no hace falta instalar otras bibliotecas.
+
+8. INICIAR EL JUEGO
+-------------------
+
+En la misma terminal, escribe:
+
+	 py main.py
+
+Si estas usando python como comando, escribe:
+
+	 python main.py
+
+Pulsa Enter. Al principio puede aparecer el mensaje "Precalculando tablas de
+valor esperado (unos segundos)...". Espera: es un calculo inicial que la IA
+necesita para jugar. Despues se abrira una ventana llamada "Cacho -
+Expectiminimax". No cierres la terminal mientras juegas; si la cierras, el
+juego tambien se detendra.
+
+La IA juega primero. Cuando termine su turno, la pantalla mostrara tus dados y
+podras jugar. La partida tiene 10 categorias para cada jugador.
+
+9. COMO JUGAR
+-------------
+
+En tu turno tienes cinco dados. Al comenzar el turno ya hay una tirada inicial
+y puedes volver a tirar hasta dos veces. Puedes tirar algunos dados o todos.
+
+1. Para volver a tirar solo algunos dados, haz clic sobre cada dado que quieras
+	volver a tirar. Los dados seleccionados se resaltan.
+2. Pulsa "TIRAR". Se vuelven a tirar los dados seleccionados y los demas se
+	conservan.
+3. Si no seleccionas ningun dado, "TIRAR" vuelve a tirar los cinco dados.
+4. Puedes repetir la tirada mientras te queden tiradas. El juego indica cuantas
+	tiradas quedan y desactiva el boton cuando ya no puedes tirar mas.
+5. Cuando quieras terminar tu turno, pulsa "ANOTAR". Aparecera una lista de
+	categorias disponibles con los puntos que dan tus dados actuales.
+6. Haz clic en la categoria donde quieras anotar. Cada categoria se puede usar
+	una sola vez por jugador. El resultado puede ser cero puntos; aun asi, la
+	categoria queda usada.
+7. La IA hara su turno automaticamente. Espera a que termine y repite estos
+	pasos cuando vuelva a ser tu turno.
+
+No tienes que pulsar ANOTAR despues de cada tirada: puedes usar tus tiradas
+disponibles antes de escoger una categoria. Mira el marcador para ver los
+puntos y el tablero para comprobar que categorias ya usaste tu y la IA.
+
+10. CATEGORIAS Y PUNTOS
+-----------------------
+
+- Balas (1): 1 punto por cada dado que muestre 1.
+- Doses: 2 puntos por cada dado que muestre 2.
+- Treses: 3 puntos por cada dado que muestre 3.
+- Cuatros: 4 puntos por cada dado que muestre 4.
+- Cincos: 5 puntos por cada dado que muestre 5.
+- Seises: 6 puntos por cada dado que muestre 6.
+- Escalera: 25 puntos si salen 1-2-3-4-5 o 2-3-4-5-6, un dado de cada valor.
+- Full: 30 puntos si salen tres dados iguales y dos dados iguales entre si
+  (por ejemplo, 4-4-4-2-2).
+- Poker: 40 puntos si al menos cuatro dados muestran el mismo valor.
+- Grande: 50 puntos si los cinco dados muestran el mismo valor.
+
+Algunas combinaciones pueden puntuar en mas de una categoria. Tu eliges donde
+anotarlas; despues de usar una categoria ya no puedes volver a elegirla durante
+esa partida.
+
+11. TERMINAR O EMPEZAR OTRA PARTIDA
+-----------------------------------
+
+- Al terminar las 10 categorias de ambos jugadores, aparecera el resultado y
+  los puntajes finales. Gana quien tenga mas puntos.
+- Para cerrar el juego, pulsa la X de la esquina de la ventana.
+- Para empezar otra partida, pulsa "NUEVA PARTIDA". Esto reinicia los puntajes
+  y las categorias usadas.
+- Si cierras la ventana, la partida termina. Para volver a jugar, ejecuta otra
+  vez py main.py (o python main.py, si ese fue el comando que te funciono).
+
+12. PROBLEMAS FRECUENTES
+-----------------------
+
+"py no se reconoce" o "python no se reconoce":
+Prueba el otro comando (python o py). Si ninguno funciona, instala Python como
+se explica en el paso 2 y reinicia VS Code.
+
+"No module named pygame":
+En la terminal de VS Code, desde la carpeta Cacho, repite py -m pip install
+pygame. Si usas python para iniciar el juego, instala con python -m pip install
+pygame. Es importante usar el mismo comando para instalar y para ejecutar.
+
+"No such file", "can't open file main.py" o no encuentra un archivo del juego:
+Comprueba que abriste la carpeta Cacho completa y que la terminal esta ubicada
+en esa carpeta. En la lista de archivos de VS Code debe aparecer main.py.
+
+La ventana parece no responder mientras inicia:
+Espera unos segundos a que termine el precalculo de la IA. En la primera
+ejecucion puede tardar un poco.
+
+La ventana se cerro o el juego se detuvo:
+Abre una terminal nueva, comprueba que estas en la carpeta Cacho y ejecuta
+py main.py (o python main.py).
+
+COMANDOS RAPIDOS
+----------------
+
+Instalar pygame (una sola vez):
+	 py -m pip install pygame
+
+Iniciar el juego:
+	 py main.py
+
+Si el comando py no funciona pero python si, sustituye py por python en ambos
+comandos.
