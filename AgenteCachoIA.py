@@ -1,4 +1,5 @@
-from AgenteCacho import (AgenteCacho, ElEstado, probabilidad_tirada, copiar_tablero, puntuar)
+from AgenteCacho import AgenteCacho, ElEstado, probabilidad_tirada, puntuar
+from funcion_evaluacion import evaluar, evaluar_base
 
 
 class AgenteCachoIA(AgenteCacho):
@@ -10,11 +11,18 @@ class AgenteCachoIA(AgenteCacho):
 
     def __init__(self, nombre="IA", altura=1, evaluacion='mejorada', pesos=None,
                  umbral=None, memo=True, adaptativa=True):
-        AgenteCacho.__init__(self, nombre, altura, evaluacion, pesos)
+        AgenteCacho.__init__(self, nombre=nombre, altura=altura)
+        self.evaluacion = evaluacion
+        self.pesos = pesos
         self.umbral = umbral
         self.memo = memo
         self.adaptativa = adaptativa
         self._cache = {}
+
+    def funcion_evaluacion(self, estado):
+        if self.evaluacion == 'base':
+            return evaluar_base(estado.tablero)
+        return evaluar(estado.tablero, estado.jugador, self.pesos)
 
     # ---------------- Expectiminimax ----------------
     def expectiminimax(self, estado, prof):
@@ -49,7 +57,7 @@ class AgenteCachoIA(AgenteCacho):
         t = estado.tablero                                  # nodo de AZAR
         v = 0.0
         for nuevos, p in probabilidad_tirada(t['dados'], accion[1]).items():
-            h = copiar_tablero(t)
+            h = self._copiar_tablero(t)
             h['dados'] = nuevos
             h['tiradas_restantes'] -= 1
             v += p * self.expectiminimax(ElEstado(estado.jugador, 0, h, None), prof + 1)

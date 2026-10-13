@@ -21,7 +21,9 @@ programar; solo hay que seguir los pasos en orden.
 
 1. Abre un navegador de Internet y visita:
 	https://www.python.org/downloads/windows/
-2. Descarga una version estable reciente de Python para Windows (64-bit).
+2. Descarga Python 3.13 para Windows (64-bit). pygame 2.6.1 no ofrece un
+	paquete precompilado compatible con Python 3.14, por lo que pip puede
+	intentar compilarlo y fallar.
 3. Abre el archivo descargado para iniciar el instalador.
 4. En la primera pantalla, marca la casilla "Add python.exe to PATH" si aparece.
 	Esto permite que Windows encuentre Python cuando escribamos comandos.
@@ -69,19 +71,19 @@ La terminal es un panel donde se escriben instrucciones para Windows.
 6. COMPROBAR QUE PYTHON ESTA INSTALADO
 --------------------------------------
 
-Escribe este comando en la terminal y pulsa Enter:
+Escribe este comando en la terminal y pulsa Enter para comprobar que esta
+instalada la version compatible:
 
-	 py --version
+	 py -3.13 --version
 
-Debe aparecer un numero de version, por ejemplo Python 3.x.x. Si Windows dice
-que no reconoce "py", prueba:
+Debe aparecer Python 3.13.x. Si Windows dice que no reconoce "py", prueba:
 
 	 python --version
 
-Si uno de los dos comandos muestra una version, Python esta listo. En los pasos
-siguientes usa el comando que funciono: py o python. Los ejemplos usan py.
-Si ninguno funciona, vuelve al paso 2, instala Python y luego cierra y vuelve
-a abrir VS Code para que Windows actualice la terminal.
+Si este ultimo comando muestra Python 3.13.x, puedes usar python en lugar de
+py -3.13 en los pasos siguientes. Si muestra otra version, usa py -3.13 o
+instala Python 3.13 desde el paso 2. Si ninguno funciona, cierra y vuelve a
+abrir VS Code despues de instalar Python.
 
 7. INSTALAR LA DEPENDENCIA DEL JUEGO
 ------------------------------------
@@ -89,9 +91,10 @@ a abrir VS Code para que Windows actualice la terminal.
 El juego utiliza pygame para mostrar la ventana y los dados. Con la terminal
 abierta en la carpeta Cacho, ejecuta:
 
-	 py -m pip install pygame
+python -m pip install pygame
+	 py -3.13 -m pip install pygame
 
-Si en el paso 6 tuviste que usar python en vez de py, ejecuta:
+Si en el paso 6 confirmaste que python es la version 3.13, tambien puedes usar:
 
 	 python -m pip install pygame
 
@@ -105,9 +108,9 @@ ya vienen en la carpeta del proyecto; no hace falta instalar otras bibliotecas.
 
 En la misma terminal, escribe:
 
-	 py main.py
+	 py -3.13 main.py
 
-Si estas usando python como comando, escribe:
+Si en el paso 6 confirmaste que python es la version 3.13, escribe:
 
 	 python main.py
 
@@ -173,7 +176,7 @@ esa partida.
 - Para empezar otra partida, pulsa "NUEVA PARTIDA". Esto reinicia los puntajes
   y las categorias usadas.
 - Si cierras la ventana, la partida termina. Para volver a jugar, ejecuta otra
-  vez py main.py (o python main.py, si ese fue el comando que te funciono).
+	vez py -3.13 main.py (o python main.py si confirmaste que es Python 3.13).
 
 12. PROBLEMAS FRECUENTES
 -----------------------
@@ -183,9 +186,9 @@ Prueba el otro comando (python o py). Si ninguno funciona, instala Python como
 se explica en el paso 2 y reinicia VS Code.
 
 "No module named pygame":
-En la terminal de VS Code, desde la carpeta Cacho, repite py -m pip install
-pygame. Si usas python para iniciar el juego, instala con python -m pip install
-pygame. Es importante usar el mismo comando para instalar y para ejecutar.
+En la terminal de VS Code, desde la carpeta Cacho, repite py -3.13 -m pip
+install pygame. Inicia el juego con py -3.13 main.py. Es importante usar la
+misma version de Python para instalar pygame y para ejecutar el juego.
 
 "No such file", "can't open file main.py" o no encuentra un archivo del juego:
 Comprueba que abriste la carpeta Cacho completa y que la terminal esta ubicada
@@ -197,16 +200,16 @@ ejecucion puede tardar un poco.
 
 La ventana se cerro o el juego se detuvo:
 Abre una terminal nueva, comprueba que estas en la carpeta Cacho y ejecuta
-py main.py (o python main.py).
+py -3.13 main.py (o python main.py si confirmaste que es Python 3.13).
 
 COMANDOS RAPIDOS
 ----------------
 
 Instalar pygame (una sola vez):
-	 py -m pip install pygame
+	 py -3.13 -m pip install pygame
 
 Iniciar el juego:
-	 py main.py
+	 py -3.13 main.py
 
-Si el comando py no funciona pero python si, sustituye py por python en ambos
-comandos.
+Si el comando py no funciona pero python muestra Python 3.13.x, sustituye
+"py -3.13" por "python" en ambos comandos.

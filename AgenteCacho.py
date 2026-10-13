@@ -168,4 +168,5 @@ class AgenteCacho(AgenteJugador):
             'puntajes': list(tablero['puntajes']),
             'usadas': [set(tablero['usadas'][0]), set(tablero['usadas'][1])],
             'ronda': tablero['ronda'],
+            'dados_reales': tablero.get('dados_reales', True),
         }
